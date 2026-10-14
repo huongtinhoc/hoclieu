@@ -1,0 +1,55 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Bài 5-6: Tập tin và thư mục · Cô Hương Tin học</title><style>
+:root{--bg:#f5f6fa;--card:#fff;--tx:#1c2333;--mu:#5b6478;--ac:#2f5bea;--acs:#e6edff;--ok:#16794a;--oks:#e1f4e9;--no:#b3261e;--nos:#fbe8e6;--bd:#e0e4ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b2030;--tx:#e8ebf4;--mu:#9aa3b8;--ac:#7a9bff;--acs:#252d4a;--ok:#5fd394;--oks:#17332a;--no:#ff8a80;--nos:#3a1f1f;--bd:#2c3348;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b2030;--tx:#e8ebf4;--mu:#9aa3b8;--ac:#7a9bff;--acs:#252d4a;--ok:#5fd394;--oks:#17332a;--no:#ff8a80;--nos:#3a1f1f;--bd:#2c3348;color-scheme:dark}
+.tag{color:var(--ac);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+h2{font-size:clamp(24px,5vw,32px);line-height:1.25;margin:4px 0 8px}
+.lead{color:var(--mu);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chips span{background:var(--acs);color:var(--ac);padding:3px 12px;border-radius:99px;font-size:14px}
+dl{margin:8px 0 0}
+dt{font-weight:600;margin-top:10px}
+dd{margin:0;color:var(--mu)}
+.note{border-left:4px solid var(--ac);background:var(--acs);padding:10px 14px;border-radius:8px;margin-top:10px;font-size:15px}
+h3.sec{margin:32px 0 12px;font-size:20px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.score{font-size:14px;color:var(--mu);font-weight:400}
+.q p{font-weight:600;margin:0 0 10px}
+.q button{display:block;width:100%;text-align:left;font:inherit;font-size:15px;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-bottom:8px;cursor:pointer}
+.q button:hover:not(:disabled){border-color:var(--ac)}
+.q button.ok{background:var(--oks);border-color:var(--ok);color:var(--ok)}
+.q button.no{background:var(--nos);border-color:var(--no);color:var(--no)}
+.q .ex{display:none;font-size:14px;color:var(--mu);margin-top:4px}
+.q.done .ex{display:block}
+.again{font:inherit;font-size:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:4px 12px;cursor:pointer}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:820px;margin:0 auto;padding:28px 18px 64px}
+a{color:var(--ac)}
+.crumb{font-size:14px;color:var(--mu);margin-bottom:18px}
+.card{scroll-margin-top:16px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:32px;flex-wrap:wrap}
+.pn a{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 16px;text-decoration:none}
+.sb{display:block;width:100%;font:inherit;padding:12px 16px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx)}
+#res a{display:block;text-decoration:none;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin-top:8px}
+#res a small{display:block;color:var(--mu)}
+#res a:hover{border-color:var(--ac)}
+a.c{display:block;text-decoration:none;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-bottom:12px}
+a.c:hover{border-color:var(--ac)}
+a.c h2{margin:4px 0;font-size:20px}a.c p{margin:0;color:var(--mu);font-size:15px}
+div.c{background:var(--card);border:1px dashed var(--bd);border-radius:16px;padding:20px;margin-bottom:12px;color:var(--mu)}
+div.c h2{margin:4px 0;font-size:20px}div.c p{margin:0;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grid>*{margin:0!important}
+</style></head><body><main><div class="crumb"><a href="index.html">Cô Hương Tin học</a> › <a href="tieuhoc.html">Tiểu học</a> › Bài 5-6</div><div class="tag">Bài 5-6</div><h2>Tập tin và thư mục</h2><p class="lead">Em học cách đặt tên, nhận biết các kiểu tập tin phổ biến và quản lí tập tin bằng thư mục.</p><div class="card" id="b0"><h3>1. Tập tin (File)</h3><p>Là sản phẩm em tạo ra từ một chương trình phần mềm, sau đó đặt tên và lưu trữ vào máy tính.</p><div class="chips"><span>Đặt tên dễ phân loại, dễ tìm kiếm</span><span>Lưu vào ổ cứng, ổ USB,…</span></div></div><div class="card" id="b1"><h3>Tên tập tin</h3><p>Gồm 2 phần: phần tên (do người đặt) và phần mở rộng (xác định loại tập tin), cách nhau bởi dấu chấm. Ví dụ: baitap.docx</p><div class="note">Tên tập tin không dài quá 255 kí tự và không dùng các kí tự \ / : * ? “ < > | .</div></div><div class="card" id="b2"><h3>Các kiểu tập tin phổ biến</h3><dl><dt>Văn bản</dt><dd><b>.doc</b> (MS Word 2003), <b>.docx</b> (MS Word 2007), <b>.pdf</b> (Adobe Reader), <b>.rtf</b> (WordPad).</dd><dt>Video, Âm thanh</dt><dd>Có nhiều định dạng, ví dụ .mp4, .mp3.</dd><dt>Nén</dt><dd><b>.rar</b> (WinRAR), <b>.zip</b>. Nén giúp giảm dung lượng lưu trữ.</dd><dt>Chương trình</dt><dd>Tập tin dùng để chạy phần mềm, ví dụ .exe.</dd></dl></div><div class="card" id="b3"><h3>2. Thư mục (Folder)</h3><p>Là một dạng tập tin đặc biệt, như ngăn chứa để quản lí và sắp xếp các tập tin. Biểu tượng thư mục thường màu vàng.</p><dl><dt>Thư mục gốc</dt><dd>Không có thư mục cha, chứa tất cả các thư mục.</dd><dt>Thư mục cha</dt><dd>Thư mục chứa thư mục khác.</dd><dt>Thư mục con</dt><dd>Thư mục nằm trong thư mục khác.</dd><dt>Thư mục rỗng</dt><dd>Không chứa tập tin hay thư mục con nào.</dd></dl><div class="note">Các thư mục được sắp xếp theo dạng cây gọi là cây thư mục.</div></div><div class="card" id="b4"><h3>Xem nội dung thư mục</h3><p>Nhấp đúp vào biểu tượng This PC trên Desktop, sau đó:</p><dl><dt>Cách 1</dt><dd>Nhấp đúp vào thư mục cần xem.</dd><dt>Cách 2</dt><dd>Nhấp chọn thư mục rồi nhấn Enter.</dd></dl></div><div class="card" id="b5"><h3>Các thao tác với thư mục</h3><p>Gợi ý thao tác trên Windows:</p><dl><dt>Tạo mới</dt><dd>Nhấp chuột phải vào vùng trống, chọn New → Folder.</dd><dt>Đổi tên</dt><dd>Chọn thư mục rồi nhấn F2.</dd><dt>Xoá</dt><dd>Chọn thư mục rồi nhấn Delete.</dd><dt>Chọn nhiều mục</dt><dd>Giữ Ctrl để chọn từng mục, giữ Shift để chọn liên tiếp.</dd></dl></div><h3 class="sec"><span>Bài tập ôn luyện</span><span class="score" id="sc"></span></h3><div id="qs"></div><div class="pn"><span><a href="tieuhoc-bai-3-4.html">← Bài 3-4</a></span><span></span></div></main><script>
+const Q=[["Tùy chọn nào sau đây là một tập tin (File)?", ["Tài liệu chứa danh sách bài tập cần làm", "Một thư mục ảnh từ chuyến đi thực địa", "Buổi phát trực tiếp sự kiện thể thao", "Một liên kết đến trang Web trường học"], 0, "Tài liệu là sản phẩm được đặt tên và lưu vào máy tính, tức là tập tin."], ["Chương trình nào được khuyến nghị để mở tập tin .pdf?", ["Microsoft Access", "Mozilla Firefox", "Adobe Reader", "Microsoft Word"], 2, "Phần mở rộng .pdf gắn với Adobe Reader."], ["Câu nào đúng về việc thay đổi phần mở rộng của tập tin?", ["Tên và phần mở rộng không bao giờ được thay đổi", "Đổi phần mở rộng không phải là đổi tên tập tin", "Đổi sai phần mở rộng có thể khiến ứng dụng đã tạo tập tin không mở được nữa"], 2, "Phần mở rộng xác định loại tập tin, nên đổi sai có thể gây lỗi khi mở."], ["Tập tin nào sau đây là tập tin nén?", ["baitap.docx", "file.zip", "bai.pptx", "archive.docx"], 1, "Tập tin nén có phần mở rộng .zip hoặc .rar."], ["Kí tự nào KHÔNG được dùng khi đặt tên tập tin?", ["?", "-", "_", "."], 0, "Các kí tự \\ / : * ? “ < > | không được dùng."], ["Thư mục không chứa tập tin hay thư mục con nào gọi là gì?", ["Thư mục gốc", "Thư mục cha", "Thư mục con", "Thư mục rỗng"], 3, "Thư mục rỗng là thư mục không chứa gì bên trong."], ["Tên của một tập tin có độ dài tối đa là bao nhiêu kí tự?", ["100", "255", "512", "Không giới hạn"], 1, "Tên tập tin không dài quá 255 kí tự."]];let st={};
+function r(){document.getElementById("qs").innerHTML=Q.map((q,i)=>{const d=i in st;return `<div class="card q ${d?"done":""}"><p>${i+1}. ${q[0]}</p>${q[1].map((o,j)=>`<button data-q="${i}" data-o="${j}" class="${d?(j==q[2]?"ok":j==st[i]?"no":""):""}" ${d?"disabled":""}>${o}</button>`).join("")}<div class="ex">💡 ${q[3]}</div></div>`}).join("");
+const n=Object.keys(st).length,ok=Object.keys(st).filter(i=>st[i]==Q[i][2]).length;
+document.getElementById("sc").innerHTML=`Đúng ${ok}/${Q.length}`+(n?` · <button class="again" id="rs">Làm lại</button>`:"")}
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
+if(t.id=="rs"){st={};r()}else if(t.dataset.o!==undefined){st[+t.dataset.q]=+t.dataset.o;const y=scrollY;r();scrollTo(0,y)}});
+r();
+</script></body></html>

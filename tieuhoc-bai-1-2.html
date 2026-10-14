@@ -1,0 +1,55 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Bài 1-2: Phần cứng máy tính · Cô Hương Tin học</title><style>
+:root{--bg:#f5f6fa;--card:#fff;--tx:#1c2333;--mu:#5b6478;--ac:#2f5bea;--acs:#e6edff;--ok:#16794a;--oks:#e1f4e9;--no:#b3261e;--nos:#fbe8e6;--bd:#e0e4ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b2030;--tx:#e8ebf4;--mu:#9aa3b8;--ac:#7a9bff;--acs:#252d4a;--ok:#5fd394;--oks:#17332a;--no:#ff8a80;--nos:#3a1f1f;--bd:#2c3348;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b2030;--tx:#e8ebf4;--mu:#9aa3b8;--ac:#7a9bff;--acs:#252d4a;--ok:#5fd394;--oks:#17332a;--no:#ff8a80;--nos:#3a1f1f;--bd:#2c3348;color-scheme:dark}
+.tag{color:var(--ac);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+h2{font-size:clamp(24px,5vw,32px);line-height:1.25;margin:4px 0 8px}
+.lead{color:var(--mu);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chips span{background:var(--acs);color:var(--ac);padding:3px 12px;border-radius:99px;font-size:14px}
+dl{margin:8px 0 0}
+dt{font-weight:600;margin-top:10px}
+dd{margin:0;color:var(--mu)}
+.note{border-left:4px solid var(--ac);background:var(--acs);padding:10px 14px;border-radius:8px;margin-top:10px;font-size:15px}
+h3.sec{margin:32px 0 12px;font-size:20px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.score{font-size:14px;color:var(--mu);font-weight:400}
+.q p{font-weight:600;margin:0 0 10px}
+.q button{display:block;width:100%;text-align:left;font:inherit;font-size:15px;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-bottom:8px;cursor:pointer}
+.q button:hover:not(:disabled){border-color:var(--ac)}
+.q button.ok{background:var(--oks);border-color:var(--ok);color:var(--ok)}
+.q button.no{background:var(--nos);border-color:var(--no);color:var(--no)}
+.q .ex{display:none;font-size:14px;color:var(--mu);margin-top:4px}
+.q.done .ex{display:block}
+.again{font:inherit;font-size:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:4px 12px;cursor:pointer}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:820px;margin:0 auto;padding:28px 18px 64px}
+a{color:var(--ac)}
+.crumb{font-size:14px;color:var(--mu);margin-bottom:18px}
+.card{scroll-margin-top:16px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:32px;flex-wrap:wrap}
+.pn a{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 16px;text-decoration:none}
+.sb{display:block;width:100%;font:inherit;padding:12px 16px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx)}
+#res a{display:block;text-decoration:none;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin-top:8px}
+#res a small{display:block;color:var(--mu)}
+#res a:hover{border-color:var(--ac)}
+a.c{display:block;text-decoration:none;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-bottom:12px}
+a.c:hover{border-color:var(--ac)}
+a.c h2{margin:4px 0;font-size:20px}a.c p{margin:0;color:var(--mu);font-size:15px}
+div.c{background:var(--card);border:1px dashed var(--bd);border-radius:16px;padding:20px;margin-bottom:12px;color:var(--mu)}
+div.c h2{margin:4px 0;font-size:20px}div.c p{margin:0;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grid>*{margin:0!important}
+</style></head><body><main><div class="crumb"><a href="index.html">Cô Hương Tin học</a> › <a href="tieuhoc.html">Tiểu học</a> › Bài 1-2</div><div class="tag">Bài 1-2</div><h2>Phần cứng máy tính</h2><p class="lead">Phần cứng là những thiết bị em có thể cầm, nắm và nhìn thấy. Bài này giúp em phân biệt thiết bị nhập, thiết bị xuất, thiết bị kết nối và thiết bị tích hợp.</p><div class="card" id="b0"><h3>1. Khái niệm phần cứng (Hardware)</h3><p>Phần cứng là các thiết bị mà chúng ta có thể cầm, nắm và nhìn thấy được.</p><div class="chips"><span>Màn hình</span><span>Loa</span><span>Tai nghe</span><span>Micro</span><span>Máy in</span><span>Bàn phím</span><span>Chuột</span></div></div><div class="card" id="b1"><h3>2. Thiết bị nhập (Input Device)</h3><p>Là thiết bị giúp em gửi, đưa, truyền thông tin vào máy tính.</p><div class="chips"><span>Bàn phím (Keyboard)</span><span>Chuột (Mouse)</span><span>Máy quét (Scanner)</span><span>Webcam</span><span>Micro</span></div></div><div class="card" id="b2"><h3>3. Thiết bị xuất (Output Device)</h3><p>Là thiết bị đưa kết quả xử lí của máy tính đến con người.</p><div class="chips"><span>Màn hình (Monitor)</span><span>Loa (Speaker)</span><span>Tai nghe (Headphone)</span><span>Máy in (Printer)</span></div></div><div class="card" id="b3"><h3>4. Thiết bị kết nối</h3><dl><dt>Cổng HDMI, cổng VGA</dt><dd>Kết nối với màn hình, máy chiếu và TV.</dd><dt>Cổng kết nối mạng (Network ports)</dt><dd>Kết nối với mạng bằng cáp có dây hoặc Wifi.</dd><dt>Cổng USB (Universal Serial Bus)</dt><dd>Kết nối với máy in, máy quét, máy ảnh, ổ đĩa Flash, bàn phím, chuột,…</dd></dl></div><div class="card" id="b4"><h3>5. Giao tiếp với AI</h3><p>Khi dùng AI, em cần thiết bị nhập để gửi yêu cầu và thiết bị xuất để nhận kết quả.</p><div class="note">Ví dụ: em gõ câu hỏi bằng bàn phím hoặc nói qua micro; AI trả lời bằng chữ trên màn hình hoặc âm thanh qua loa.</div></div><div class="card" id="b5"><h3>6. Thiết bị nhập tích hợp</h3><dl><dt>Màn hình cảm ứng (Touchscreen)</dt><dd>Giúp tương tác với thiết bị bằng cách chạm ngón tay vào các vùng trên màn hình.</dd><dt>Bộ tai nghe (Headset)</dt><dd>Thiết bị tích hợp cả loa và micro.</dd></dl></div><h3 class="sec"><span>Bài tập ôn luyện</span><span class="score" id="sc"></span></h3><div id="qs"></div><div class="pn"><span></span><span><a href="tieuhoc-bai-3-4.html">Bài 3-4 →</a></span></div></main><script>
+const Q=[["Loại phần cứng nào gửi dữ liệu đến máy tính?", ["Xuất (Output)", "Nhập (Input)", "Lưu trữ (Storage)", "Màn hình (Monitor)"], 1, "Thiết bị nhập đưa thông tin vào máy tính."], ["Thiết bị nào có bàn di chuột tích hợp để trỏ và nhấp?", ["Laptop", "Desktop", "Tablet", "Smartphone"], 0, "Laptop có bàn di chuột (touchpad) tích hợp sẵn."], ["Thiết bị nhập nào được tích hợp vào điện thoại thông minh?", ["Màn hình cảm ứng", "Bàn di chuột", "Tai nghe", "Bộ sạc pin"], 0, "Điện thoại thông minh dùng màn hình cảm ứng để nhập bằng cách chạm."], ["Ví dụ về thiết bị nhập tích hợp sẵn là gì?", ["Màn hình cảm ứng", "Chuột", "Tai nghe"], 0, "Chuột và tai nghe là thiết bị rời, còn màn hình cảm ứng được tích hợp ngay trên thiết bị."], ["“Máy tính để bàn có thể di động được.” Đúng hay sai?", ["Đúng", "Sai"], 1, "Máy tính để bàn thường đặt cố định một chỗ; điện thoại, máy tính bảng, laptop mới là thiết bị di động."], ["“Tai nghe và loa đều là thiết bị ngoại vi cho âm thanh.” Đúng hay sai?", ["Đúng", "Sai"], 0, "Cả hai đều là thiết bị ngoại vi liên quan đến âm thanh."], ["Thư điện tử (Email) là phần cứng hay phần mềm?", ["Phần cứng", "Phần mềm"], 1, "Email và cơ sở dữ liệu là phần mềm; chuột và bàn phím là phần cứng."]];let st={};
+function r(){document.getElementById("qs").innerHTML=Q.map((q,i)=>{const d=i in st;return `<div class="card q ${d?"done":""}"><p>${i+1}. ${q[0]}</p>${q[1].map((o,j)=>`<button data-q="${i}" data-o="${j}" class="${d?(j==q[2]?"ok":j==st[i]?"no":""):""}" ${d?"disabled":""}>${o}</button>`).join("")}<div class="ex">💡 ${q[3]}</div></div>`}).join("");
+const n=Object.keys(st).length,ok=Object.keys(st).filter(i=>st[i]==Q[i][2]).length;
+document.getElementById("sc").innerHTML=`Đúng ${ok}/${Q.length}`+(n?` · <button class="again" id="rs">Làm lại</button>`:"")}
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
+if(t.id=="rs"){st={};r()}else if(t.dataset.o!==undefined){st[+t.dataset.q]=+t.dataset.o;const y=scrollY;r();scrollTo(0,y)}});
+r();
+</script></body></html>
