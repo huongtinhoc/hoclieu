@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài học – Học liệu Tin học</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><b>💻</b> Học liệu Tin học</a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeBtn" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện sáng hoặc tối">🌓</button>
+</div></header>
+
+<main class="wrap" id="app" style="display:none">
+  <div class="crumb"><a href="./">← Tất cả bài học</a><span class="tag" id="tag"></span><h1 id="title"></h1></div>
+
+  <section class="viewer">
+    <div class="stage" id="stage">
+      <img id="img" alt="">
+      <button class="nav prev" id="prev" aria-label="Slide trước">‹</button>
+      <button class="nav next" id="next" aria-label="Slide sau">›</button>
+    </div>
+    <div class="controls">
+      <span class="counter" id="counter"></span>
+      <div class="progress bar"><i id="pbar"></i></div>
+      <button class="btn ghost" id="fs" title="Toàn màn hình (phím F)">⛶ Toàn màn hình</button>
+    </div>
+    <details class="txt" id="txtBox"><summary>📝 Nội dung chữ của slide này</summary><p id="txt"></p></details>
+    <p class="hint">Mẹo: dùng phím ← → hoặc vuốt ngang trên điện thoại để chuyển slide.</p>
+  </section>
+
+  <h2>🗂️ Tất cả slide</h2>
+  <div class="thumbs" id="thumbs"></div>
+
+  <div class="lessons-nav">
+    <a class="btn ghost" id="lprev" href="#"></a>
+    <a class="btn" id="lnext" href="#"></a>
+  </div>
+</main>
+<footer>Học liệu dùng cho học sinh tự học và ôn tập tại nhà.</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+const params=new URLSearchParams(location.search);
+const idx=Math.max(0,LESSONS.findIndex(l=>l.id===params.get("b")));
+const L=LESSONS[idx];
+document.documentElement.style.setProperty("--c",L.color);
+document.title=L.no+": "+L.title+" – Học liệu Tin học";
+document.getElementById("tag").textContent=L.no;
+document.getElementById("title").textContent=L.title;
+document.getElementById("app").style.display="";
+
+const $=id=>document.getElementById(id);
+const key="seen:"+L.id;
+let seen=new Set(store.get(key,[]));
+let cur=parseInt(params.get("s"))||store.get("pos:"+L.id,1);
+cur=Math.min(Math.max(1,cur),L.n);
+
+const thumbs=$("thumbs");
+thumbs.innerHTML=Array.from({length:L.n},(_,i)=>`<button class="th" data-i="${i+1}" aria-label="Slide ${i+1}"><img loading="lazy" src="${slideSrc(L.id,i+1)}" alt=""><span>${i+1}</span></button>`).join("");
+thumbs.addEventListener("click",e=>{const b=e.target.closest(".th");if(b){go(+b.dataset.i);scrollTo({top:0,behavior:"smooth"})}});
+
+function go(n){
+  cur=Math.min(Math.max(1,n),L.n);
+  $("img").src=slideSrc(L.id,cur);
+  $("img").alt="Slide "+cur+": "+(L.texts[cur-1]||"").slice(0,120);
+  $("counter").textContent=`Slide ${cur} / ${L.n}`;
+  $("pbar").style.width=(cur/L.n*100)+"%";
+  $("prev").disabled=cur===1; $("next").disabled=cur===L.n;
+  $("txt").textContent=L.texts[cur-1]||"(Slide này chủ yếu là hình ảnh.)";
+  seen.add(cur); store.set(key,[...seen]); store.set("pos:"+L.id,cur);
+  thumbs.querySelectorAll(".th").forEach(b=>{const i=+b.dataset.i;b.classList.toggle("on",i===cur);b.classList.toggle("seen",seen.has(i))});
+  // nạp trước slide kế tiếp
+  if(cur<L.n){const p=new Image();p.src=slideSrc(L.id,cur+1)}
+  history.replaceState(null,"","?b="+L.id+"&s="+cur);
+}
+$("prev").onclick=()=>go(cur-1);
+$("next").onclick=()=>go(cur+1);
+$("img").onclick=e=>{ if(e.offsetX>e.target.clientWidth/2) go(cur+1); else go(cur-1) };
+addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT") return;
+  if(e.key==="ArrowRight"||e.key==="PageDown"||e.key===" "){e.preventDefault();go(cur+1)}
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){go(cur-1)}
+  else if(e.key==="Home") go(1); else if(e.key==="End") go(L.n);
+  else if(e.key==="f"||e.key==="F") toggleFs();
+});
+let x0=null;
+$("stage").addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+$("stage").addEventListener("touchend",e=>{
+  if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)>40) go(cur+(dx<0?1:-1));
+});
+function toggleFs(){
+  const s=$("stage");
+  if(document.fullscreenElement) document.exitFullscreen();
+  else if(s.requestFullscreen) s.requestFullscreen();
+}
+$("fs").onclick=toggleFs;
+if(!document.documentElement.requestFullscreen) $("fs").style.display="none";
+
+const pv=LESSONS[idx-1], nx=LESSONS[idx+1];
+const lp=$("lprev"), ln=$("lnext");
+if(pv){lp.href="lesson.html?b="+pv.id;lp.textContent="← "+pv.no}else lp.style.display="none";
+if(nx){ln.href="lesson.html?b="+nx.id;ln.textContent=nx.no+" →"}else{ln.href="./";ln.textContent="🏠 Về trang chủ"}
+go(cur);
+</script>
+</body>
+</html>
